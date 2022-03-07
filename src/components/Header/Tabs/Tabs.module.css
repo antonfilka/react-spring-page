@@ -1,0 +1,41 @@
+.tabsWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tabs a {
+    color: black;
+    text-decoration: none;
+}
+
+
+.switcher{
+
+}
+
+@media only screen and (max-width: 1100px) {
+    .tabsWrapper{
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    .tabs {
+        display: flex;
+        margin-left: auto;
+    }
+    .switcher{
+        margin-right: 15px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .tabsWrapper{
+        display: none;
+    }
+}
