@@ -28,41 +28,6 @@
 }
 
 
-.search {
-    margin-left: 40%;
-    display: flex;
-    width: 100%;
-    margin-top: 30px;
-}
-
-.search input {
-    display: flex;
-    height: 50px;
-    width: 70%;
-    border-radius: 18px;
-    font-size: 18px;
-    padding-left: 20px;
-    padding-right: 10px;
-    border: none;
-}
-
-.search input:focus {
-    outline: none !important;
-    border: 1px solid rgb(126, 177, 50);
-    box-shadow: 0 0 5px rgb(126, 177, 50);
-}
-
-@media only screen and (max-width: 1000px) {
-    .search {
-        margin: 0;
-        margin-top: 30px;
-        justify-content: center;
-    }
-    .search input {
-        font-size: 16px;
-        width: 89%;
-    }
-}
 
 @media only screen and (max-width: 800px) {
     .cards {

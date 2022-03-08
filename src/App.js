@@ -8,7 +8,9 @@ import SideBar from "./components/SideBar/SideBar";
 function App() {
 
     const [overlayIsActive, setOverlayIsActive] = useState(false);
-    const [cards, setCards] = useState([{
+    const [activeTabId, setActiveTabId] = useState([])
+    const cards  = [
+        {
         title: 'Spring Boot',
         text: 'Takes an opinionated view of building Spring applications and gets you up and running as quickly as possible.',
         img: 'https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd285ed2ba.svg',
@@ -104,9 +106,9 @@ function App() {
             text: 'Provides Familiar Spring Abstractions for Apache Kafka.',
             id: 16,
         },
-    ])
-
-    const [tabs, setTabs] = useState([{
+    ]
+    const tabs = [
+        {
         tabTitle: 'Why Spring',
         isDropdown: true,
         tabItems: [
@@ -119,7 +121,6 @@ function App() {
             { itemTitle: 'Serverless', link: 'https://spring.io/',},
             { itemTitle: 'Batch', link: 'https://spring.io/', }
         ],
-        isActive: false,
         id: 1,
     },
         {
@@ -131,7 +132,6 @@ function App() {
                 { itemTitle: 'Guides', link: 'https://spring.io/guides', id: 3, },
                 { itemTitle: 'Blog', link: 'https://spring.io/blog', id: 4, },
             ],
-            isActive: false,
             id: 2,
         },
         {
@@ -149,21 +149,18 @@ function App() {
                 { itemTitle: 'Spring Security', link: 'https://spring.io/projects/spring-security', id: 9, },
                 { itemTitle: 'View all projects', link: 'https://spring.io/projects', id: 10, },
             ],
-            isActive: false,
             id: 3,
         },
         {
             tabTitle: 'Training',
             isDropdown: false,
             link: 'https://spring.io/training',
-            isActive: false,
             id: 4,
         },
         {
             tabTitle: 'Support',
             isDropdown: false,
             link: 'https://spring.io/support',
-            isActive: false,
             id: 5,
         },
         {
@@ -174,14 +171,12 @@ function App() {
                 { itemTitle: 'Events', link: 'https://spring.io/events' },
                 { itemTitle: 'Team', link: 'https://spring.io/team' },
             ],
-            isActive: false,
             id: 6,
-        },])
-
+        },]
 
     return (
         <div className = "App" >
-            <SideBar className = "App-sideBar" overlayIsActive={overlayIsActive} setOverlayIsActive={setOverlayIsActive} tabs={tabs} setTabs={setTabs}/>
+            <SideBar className = "App-sideBar" overlayIsActive={overlayIsActive} setOverlayIsActive={setOverlayIsActive} tabs={tabs} activeTabId={activeTabId} setActiveTabId={setActiveTabId}/>
             <Header className = "App-header" setOverlayIsActive={setOverlayIsActive} tabs={tabs}/>
             <Intro className = "App-intro"/>
             <Cards className = "App-cards" cards={cards}/>

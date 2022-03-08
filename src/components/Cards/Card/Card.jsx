@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./Card.module.css";
 
-
 const Card = (props) => {
+    const {img, title, text} = props;
     return(
         <div className={classes.card}>
-            <img src={props.img} alt="img"/>
+            <img src={img} alt="img"/>
             <div className={classes.text} >
-                <h2>{props.title}</h2>
-                <p>{props.text}</p>
+                <h2>{title}</h2>
+                <p>{text}</p>
             </div>
         </div>
 

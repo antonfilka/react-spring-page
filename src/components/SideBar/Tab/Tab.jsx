@@ -2,13 +2,12 @@ import React from "react";
 import classes from "./Tab.module.css";
 
 const Tab = (props) => {
-    const {link, tabTitle} = props;
+    const {tab} = props;
     return(
-        <div className={classes.nonDropTab}>
-            <a href={link}><h4>{tabTitle}</h4></a>
+        <div>
+            <a href={tab.link}>{tab.tabTitle}</a>
+            <hr className={classes.hr}/>
         </div>
-
-
     )
 }
 

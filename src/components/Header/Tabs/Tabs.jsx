@@ -4,19 +4,14 @@ import Switcher from "./Switcher/Switcher";
 import Tab from "./Tab/Tab";
 import DropdownTab from "./DropdownTab/DropdownTab";
 
-
 const Tabs = (props) => {
+    const {tabs} = props;
     return(
         <div className={classes.tabsWrapper}>
             <div className={classes.tabs}>
-                {props.tabs.map((tab) => {
-                    if (tab.isDropdown) {
-                        return (<DropdownTab key={tab.id} tab={tab}/>)
-                    } else {
-                        return (<Tab key={tab.id} link={tab.link} tabTitle={tab.tabTitle}/>)
-                    }
-                })
-                }
+                {tabs.map((tab) => tab.isDropdown
+                    ? <DropdownTab key={tab.id} tab={tab}/>
+                    : <Tab key={tab.id} link={tab.link} tabTitle={tab.tabTitle}/>)}
             </div>
             <Switcher className={classes.switcher}/>
     </div>
