@@ -1,23 +1,12 @@
-.headerWrapper{
-    display: block;
-    width: 100%;
-    margin: 0;
-    position: fixed;
-    z-index: 1;
-}
-.headWrapper hr {
-    opacity: 30%;
-}
-
 .header {
     display: flex;
     flex-direction: row;
-    margin-left: 150px;
-    margin-right: 110px;
+    z-index: 1;
     margin-bottom: 15px;
-    padding-top: 20px;
+    padding: 10px 120px 10px 150px;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -25,7 +14,7 @@
 }
 
 .tabs {
-
+    display: flex;
 }
 
 .burger {
@@ -35,8 +24,6 @@
 .burger img {
     width: 25px;
 }
-
-
 
 
 @media only screen and (max-width: 1100px) {
@@ -50,8 +37,8 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin: 5px 10px ;
-        padding-top: 0;
+        margin: 5px;
+        padding: 5px 30px 15px 20px;
     }
 }
 
@@ -65,22 +52,28 @@
         margin-left: auto;
         margin-right: 30px;
     }
-    .headerWrapper {
-        display: block;
-        width: 100%;
-        position: fixed;
-        z-index: 1;
+
+    .logo {
+        margin-top: -5px;
     }
 
     .header {
-        width: 100%;
         display: flex;
         position: fixed;
         align-items: center;
+        width: 100%;
+        z-index: 1;
         height: 70px;
         margin: 0;
-        padding-left: 10px;
+        padding: 5px 30px 0 20px;
         background-color: #ffffff;
-        z-index: 1;
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    .header {
+        padding: 5px 30px 0 20px;
     }
 }

@@ -38,3 +38,9 @@
 .reactSwitchLabel:active .reactSwitchButton {
     width: 25px;
 }
+
+@media only screen and (max-width: 900px) {
+    .reactSwitchLabel {
+        display: none;
+    }
+}

@@ -49,3 +49,7 @@
 .dropdownTab:hover .dropdownContent{
     display: block;
 }
+
+.T1{
+    font-weight: bold;
+}
