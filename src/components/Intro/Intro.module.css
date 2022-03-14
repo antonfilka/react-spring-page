@@ -1,0 +1,48 @@
+.intro {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 100px 100px 150px;
+}
+
+.intro h1 {
+    font: 60px 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+.intro p {
+    margin-top: 30px;
+    color: #404346;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media only screen and (max-width: 900px) {
+    .intro {
+        margin-top: 50px;
+        padding: 10px 20px 100px 20px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .intro {
+        padding: 10px 20px 100px 20px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .intro {
+        padding-left: 30px;
+    }
+
+    .intro h1 {
+        font: 50px 'Open Sans', sans-serif;
+        font-weight: bold;
+    }
+
+    .intro p {
+        margin-top: 20px;
+        color: #404346;
+        font-size: 20px;
+        font-family: 'Open Sans', sans-serif;
+    }
+}

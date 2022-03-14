@@ -1,0 +1,60 @@
+.overlay {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    background-color: rgb(25, 30, 30);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+}
+
+.overlay img {
+    width: 20px;
+    margin: 20px  7px;
+}
+
+.overlayContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    top: 15%;
+    padding-left: 30px;
+    width: 100%;
+}
+
+.overlayOpen{
+    height: 100%;
+}
+
+.overlayClose{
+    height: 0;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #ffffff;
+    display: block;
+    font-size: 30px;
+    font-family: 'Open Sans', sans-serif;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+
+.overlay .closebtn {
+    color: #ffffff;
+    position: absolute;
+    right: 15px;
+    font-weight: lighter;
+    font-size: 40px;
+}
