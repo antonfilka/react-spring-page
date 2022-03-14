@@ -1,14 +1,40 @@
 import './App.css';
-import Header from "./components/Header/Header";
-import Intro from "./components/Intro/Intro";
-import Cards from "./components/Cards/Cards";
+import React, {useEffect, useState} from 'react'
+import { useNavigate} from "react-router-dom";
+import HomePage from "./components/HomePage/HomePage"
+import Login from "./components/Login/Login"
+
+import {Routes, Route} from "react-router-dom";
 
 function App() {
-    return (<div className="App">
-        <Header className="App-header"/>
-        <Intro className="App-intro"/>
-        <Cards className="App-cards"/>
-    </div>);
+    const [isAuthorized, setIsAuthorized] = useState(false);
+    let navigate = useNavigate();
+
+    
+    useEffect (() => {
+        isAuthorized ? navigate("/") : navigate("/login")
+    }, [isAuthorized])
+
+    useEffect(() => {
+        window.onbeforeunload = function() {
+            setIsAuthorized(false);
+        };
+    
+        return () => {
+            window.onbeforeunload = null;
+        };
+    }, []);
+    
+    return (
+        <div className="App">
+            <Routes>
+                <Route path='/' element={<HomePage/>}/>
+                <Route path='/login' element={<Login setIsAuthorized={setIsAuthorized}/>}/>
+            </Routes>
+        </div>
+        
+    );
 }
 
 export default App;
+ 
