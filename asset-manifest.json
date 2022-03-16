@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-spring-page/static/css/main.3a7acd4b.css",
+    "main.js": "/react-spring-page/static/js/main.ef19544a.js",
+    "index.html": "/react-spring-page/index.html",
+    "main.3a7acd4b.css.map": "/react-spring-page/static/css/main.3a7acd4b.css.map",
+    "main.ef19544a.js.map": "/react-spring-page/static/js/main.ef19544a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3a7acd4b.css",
+    "static/js/main.ef19544a.js"
+  ]
+}
