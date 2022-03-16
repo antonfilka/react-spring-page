@@ -1,23 +1,24 @@
 import './App.css';
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import { useNavigate} from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage"
 import Login from "./components/Login/Login"
-
 import {Routes, Route} from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {setIsAuthorized} from "./store/loginPage-reducer"
 
-function App() {
-    const [isAuthorized, setIsAuthorized] = useState(false);
-    let navigate = useNavigate();
+const App = () => {
+    const isAuthorized = useSelector(state => state.loginPage.isAuthorized)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    
     useEffect (() => {
         isAuthorized ? navigate("/") : navigate("/login")
     }, [isAuthorized])
 
     useEffect(() => {
         window.onbeforeunload = function() {
-            setIsAuthorized(false);
+            dispatch(setIsAuthorized(false));
         };
     
         return () => {
@@ -29,12 +30,13 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
-                <Route path='/login' element={<Login setIsAuthorized={setIsAuthorized}/>}/>
+                <Route path='/login' element={<Login/>}/>
             </Routes>
+          
+
         </div>
         
     );
 }
 
 export default App;
- 
