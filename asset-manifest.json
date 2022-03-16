@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-spring-deploy/redux/static/css/main.3a7acd4b.css",
-    "main.js": "/react-spring-deploy/redux/static/js/main.ef19544a.js",
-    "index.html": "/react-spring-deploy/redux/index.html",
-    "main.3a7acd4b.css.map": "/react-spring-deploy/redux/static/css/main.3a7acd4b.css.map",
-    "main.ef19544a.js.map": "/react-spring-deploy/redux/static/js/main.ef19544a.js.map"
+    "main.css": "/react-spring-deploy/tree/redux/static/css/main.3a7acd4b.css",
+    "main.js": "/react-spring-deploy/tree/redux/static/js/main.ef19544a.js",
+    "index.html": "/react-spring-deploy/tree/redux/index.html",
+    "main.3a7acd4b.css.map": "/react-spring-deploy/tree/redux/static/css/main.3a7acd4b.css.map",
+    "main.ef19544a.js.map": "/react-spring-deploy/tree/redux/static/js/main.ef19544a.js.map"
   },
   "entrypoints": [
     "static/css/main.3a7acd4b.css",
