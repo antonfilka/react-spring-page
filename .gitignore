@@ -180,3 +180,10 @@ dist
 
 # TernJS port file
 .tern-port
+src/.DS_Store
+src/components/Header/.DS_Store
+src/components/Cards/.DS_Store
+src/components/SideBar/.DS_Store
+src/components/.DS_Store
+.gitignore
+.DS_Store
