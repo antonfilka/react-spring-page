@@ -3,12 +3,16 @@ import classes from './Header.module.css';
 import Tabs from './Tabs/Tabs';
 import SideBar from './../SideBar/SideBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOverlayIsActive } from './../../store/homePage-reducer';
+import { setOverlayIsActive } from '../../store/actions/homePageActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const tabs = useSelector(state => state.homePage.tabs);
   const overlayIsActive = useSelector(state => state.homePage.overlayIsActive);
-  const dispatch = useDispatch();
+
+  const handlerBurgerOnClick = () => {
+    dispatch(setOverlayIsActive(true));
+  };
 
   return (
     <>
@@ -30,7 +34,7 @@ const Header = () => {
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
             alt="img"
-            onClick={() => dispatch(setOverlayIsActive(true))}
+            onClick={() => handlerBurgerOnClick()}
           />
         </div>
       </div>

@@ -1,6 +1,8 @@
-const SET_OVERLAY_IS_ACTIVE = "SET-OVERLAY-IS-ACTIVE"
-const SET_SEARCH_STRING = "SET-SEARCH-STRING"
-const SET_ACTIVE_TAB_ID = "SET-ACTIVE-TAB-ID"
+import { setActiveTabIdFormatter } from "../formatters/homePageFormatter"
+
+const SET_OVERLAY_IS_ACTIVE = "SET_OVERLAY_IS_ACTIVE"
+const SET_SEARCH_STRING = "SET_SEARCH_STRING"
+const SET_ACTIVE_TAB_ID = "SET_ACTIVE_TAB_ID"
 
 const initialState = {
     overlayIsActive: false,
@@ -145,23 +147,15 @@ const initialState = {
 export const homeReducer = (state = initialState, action) => {
     switch (action.type){
         case SET_OVERLAY_IS_ACTIVE: {
-            return({...state, overlayIsActive: action.isActive})
+            return({...state, overlayIsActive: action.payload})
         }
         case SET_SEARCH_STRING:{
-            return ({...state, searchString: action.searchString})
+            return ({...state, searchString: action.payload})
         }
         case SET_ACTIVE_TAB_ID:{
-            if(state.activeTabId.includes(action.id)){
-                return ({...state, activeTabId: state.activeTabId.filter(item => item !== action.id)});
-            } else {
-                return ({...state, activeTabId: [...state.activeTabId, action.id]});
-            }
+            return setActiveTabIdFormatter(state,action);
         }
         default:
             return state;
     }
 }
-
-export const setOverlayIsActive = (isActive) => ({type: SET_OVERLAY_IS_ACTIVE, isActive});
-export const setSearchString = (searchString) => ({type: SET_SEARCH_STRING, searchString});
-export const setActiveTabId = (id) => ({type: SET_ACTIVE_TAB_ID, id});

@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from "redux"
-import { loginReducer } from "./loginPage-reducer";
-import { homeReducer } from "./homePage-reducer";
+import { loginReducer } from "./reducers/loginPageReducer";
+import { homeReducer } from "./reducers/homePageReducer";
 
 const reducers = combineReducers({
     loginPage: loginReducer,

@@ -5,12 +5,12 @@ import Card from './Card/Card';
 import NoCardsPlug from './NoCardsPlug/NoCardsPlug';
 import SearchBar from './SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchString } from './../../store/homePage-reducer';
+import { setSearchString } from '../../store/actions/homePageActions';
 
 const Cards = () => {
+  const dispatch = useDispatch();
   const cards = useSelector(state => state.homePage.cards);
   const searchString = useSelector(state => state.homePage.searchString);
-  const dispatch = useDispatch();
 
   const handleSearchStringChange = debounce(
     e => dispatch(setSearchString(e.target.value)),

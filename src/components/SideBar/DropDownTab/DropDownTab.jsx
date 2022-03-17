@@ -2,12 +2,16 @@ import React from 'react';
 import classes from './DropDownTab.module.css';
 import DropDownContent from './DropDownContent/DropDownContent';
 import clsx from 'clsx';
-import { setActiveTabId } from './../../../store/homePage-reducer';
+import { setActiveTabId } from '../../../store/actions/homePageActions';
 import { useSelector, useDispatch } from 'react-redux';
 
 const DropDownTab = ({ tab }) => {
-  const activeTabId = useSelector(state => state.homePage.activeTabId);
   const dispatch = useDispatch();
+  const activeTabId = useSelector(state => state.homePage.activeTabId);
+
+  const handlerDropdownOnClick = id => {
+    dispatch(setActiveTabId(id));
+  };
 
   return (
     <div>
@@ -17,7 +21,7 @@ const DropDownTab = ({ tab }) => {
           className={clsx({ [classes.flipped]: activeTabId.includes(tab.id) })}
           src="https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-7.jpg"
           alt="img"
-          onClick={() => dispatch(setActiveTabId(tab.id))}
+          onClick={() => handlerDropdownOnClick(tab.id)}
         />
       </div>
       <hr className={classes.hr} />

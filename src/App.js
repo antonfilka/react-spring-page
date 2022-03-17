@@ -5,7 +5,7 @@ import HomePage from "./components/HomePage/HomePage"
 import Login from "./components/Login/Login"
 import {Routes, Route} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import {setIsAuthorized} from "./store/loginPage-reducer"
+import {setIsAuthorized} from "./store/actions/loginPageActions"
 
 const App = () => {
     const isAuthorized = useSelector(state => state.loginPage.isAuthorized)
