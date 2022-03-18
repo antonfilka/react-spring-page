@@ -1,12 +1,7 @@
-import { combineReducers, createStore } from "redux"
-import { loginReducer } from "./reducers/loginPageReducer";
-import { homeReducer } from "./reducers/homePageReducer";
+import { applyMiddleware, createStore } from "redux"
+import { thunkMiddleware } from "./middleware/thunkMiddleware";
+import { rootReducer } from "./reducers/rootReducer";
 
-const reducers = combineReducers({
-    loginPage: loginReducer,
-    homePage: homeReducer,
-})
-
-const store = createStore(reducers);
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export default store;

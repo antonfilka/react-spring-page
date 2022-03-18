@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
 import clsx from 'clsx';
@@ -8,6 +8,7 @@ import {
   setInputUsername,
   setInputPassword,
   setIsAuthorized,
+  getIsAuthorized,
 } from '../../store/actions/loginPageActions';
 
 const Login = () => {
@@ -40,6 +41,10 @@ const Login = () => {
   const handlerPasswordInputChange = e => {
     dispatch(setInputPassword(e.target.value));
   };
+
+  useEffect(() => {
+    dispatch(getIsAuthorized());
+  }, []);
 
   return (
     <div className={clsx(classes.login, { [classes.warning]: isWarning })}>
