@@ -1,37 +1,23 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+
 import classes from './Login.module.css';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  setWarning,
   setInputUsername,
   setInputPassword,
-  setIsAuthorized,
-  getIsAuthorized,
+  authorize,
 } from '../../store/actions/loginPageActions';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const userData = useSelector(state => state.loginPage.userData);
+
   const isWarning = useSelector(state => state.loginPage.isWarning);
   const inputPassword = useSelector(state => state.loginPage.inputPassword);
   const inputUsername = useSelector(state => state.loginPage.inputUsername);
 
   const handlerButton = () => {
-    if (
-      inputUsername === userData.username &&
-      inputPassword === userData.password
-    ) {
-      navigate('/');
-      dispatch(setWarning(false));
-      dispatch(setIsAuthorized(true));
-    } else {
-      dispatch(setInputUsername(''));
-      dispatch(setInputPassword(''));
-      dispatch(setWarning(true));
-    }
+    dispatch(authorize(inputUsername, inputPassword));
   };
 
   const handlerUsernameInputChange = e => {
@@ -41,10 +27,6 @@ const Login = () => {
   const handlerPasswordInputChange = e => {
     dispatch(setInputPassword(e.target.value));
   };
-
-  useEffect(() => {
-    dispatch(getIsAuthorized());
-  }, []);
 
   return (
     <div className={clsx(classes.login, { [classes.warning]: isWarning })}>
