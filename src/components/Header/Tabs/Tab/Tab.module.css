@@ -1,9 +1,9 @@
 .nonDropTab {
-    display: flex;
-    align-items: center;
-    margin: 0 11px;
+  display: flex;
+  align-items: center;
+  margin: 0 11px;
 }
 
-.T1{
-    font-weight: bold;
+.T1 {
+  font-weight: bold;
 }

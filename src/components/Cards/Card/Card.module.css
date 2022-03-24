@@ -1,59 +1,57 @@
 .card {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 35px;
+  margin: 15px;
+  max-width: 35%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  margin-top: -20px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    max-width: 35%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .card {
+    max-width: 80%;
+    width: 90%;
     display: flex;
-    position: relative;
     align-items: flex-start;
+    position: relative;
     background-color: #ffffff;
     border-radius: 6px;
     padding: 35px;
     margin: 15px;
-    max-width: 35%;
-}
-
-.text {
-    display: flex;
-    flex-direction: column;
-    margin-top: -20px;
-}
-
-@media only screen and (max-width: 1000px) {
-    .card {
-        max-width: 35%;
-    }
-}
-
-
-@media only screen and (max-width: 800px) {
-
-    .card {
-        max-width: 80%;
-        width: 90%;
-        display: flex;
-        align-items: flex-start;
-        position: relative;
-        background-color: #ffffff;
-        border-radius: 6px;
-        padding: 35px;
-        margin: 15px;
-    }
+  }
 }
 
 .card:hover {
-    box-shadow: 0px 8px 16px 0px rgba(146, 146, 146, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(146, 146, 146, 0.2);
 }
 
 .text {
-    padding: 0 30px;
+  padding: 0 30px;
 }
 
 .text p {
-    color: #404346;
-    font-size: 18px;
-    font-weight: 200;
-    font-family: 'Open Sans', sans-serif;
+  color: #404346;
+  font-size: 18px;
+  font-weight: 200;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .text h2 {
-    font-size: 22px;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
 }
