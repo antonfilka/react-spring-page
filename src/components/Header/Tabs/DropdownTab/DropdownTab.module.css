@@ -1,55 +1,53 @@
 .dropdownTabs {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .dropdownTab {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
-.dropButton{
-    cursor: pointer;
-    border: none;
-    background-color: #ffffff;
-    font: inherit;
+.dropButton {
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  font: inherit;
 }
 
 .dropImg {
-    width: 20px;
-    margin-bottom: -4px;
-    margin-right: 8px;
+  width: 20px;
+  margin-bottom: -4px;
+  margin-right: 8px;
 }
-
 
 .dropdownContent {
-    padding: 20px 10px 10px 10px;
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 170px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 8px;
+  padding: 20px 10px 10px 10px;
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
 }
 
-.dropdownContent a{
-    color: black;
-    padding: 15px 20px;
-    text-decoration: none;
-    display: block;
+.dropdownContent a {
+  color: black;
+  padding: 15px 20px;
+  text-decoration: none;
+  display: block;
 }
 
 .dropdownContent a:hover {
-    color: rgb(126, 177, 50);
+  color: rgb(126, 177, 50);
 }
 
-.dropdownTab:hover .dropdownContent{
-    display: block;
+.dropdownTab:hover .dropdownContent {
+  display: block;
 }
 
-.T1{
-    font-weight: bold;
+.T1 {
+  font-weight: bold;
 }

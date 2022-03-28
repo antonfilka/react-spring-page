@@ -1,31 +1,30 @@
 .isDropdown {
-    display: flex;
-    justify-content: space-between;
-    margin-right: 17%;
-
+  display: flex;
+  justify-content: space-between;
+  margin-right: 17%;
 }
 
 .isDropdown img {
-    margin: 10px 0 0 0;
-    justify-self: flex-end;
-    width: 40px;
-    height: 40px;
+  margin: 10px 0 0 0;
+  justify-self: flex-end;
+  width: 40px;
+  height: 40px;
 }
 
 .flipped {
-    transform: scaleY(-1);
+  transform: scaleY(-1);
 }
 
 .overlay .closebtn {
-    color: #ffffff;
-    position: absolute;
-    right: 15px;
-    font-weight: lighter;
-    font-size: 40px;
+  color: #ffffff;
+  position: absolute;
+  right: 15px;
+  font-weight: lighter;
+  font-size: 40px;
 }
 
 .hr {
-    width: 85%;
-    opacity: 40%;
-    margin-right: 20%;
+  width: 85%;
+  opacity: 40%;
+  margin-right: 20%;
 }

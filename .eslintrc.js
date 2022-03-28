@@ -1,27 +1,24 @@
 module.exports = {
-    'env': {
-      'browser': true,
-      'es2021': true,
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'plugin:react/recommended',
+    'google',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    'extends': [
-      'plugin:react/recommended',
-      'google',
-      "plugin:react-hooks/recommended",
-      'prettier'
-    ],
-    'parserOptions': {
-      'ecmaFeatures': {
-        'jsx': true,
-      },
-      'ecmaVersion': 'latest',
-      'sourceType': 'module',
-    },
-    'plugins': [
-      'react',
-    ],
-    'rules': {
-      "react/prop-types": 0,
-      "react-hooks/exhaustive-deps": 0
-    },
-  };
-  
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react'],
+  rules: {
+    'react/prop-types': 0,
+    'react-hooks/exhaustive-deps': 0,
+  },
+};
