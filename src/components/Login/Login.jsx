@@ -4,34 +4,36 @@ import classes from './Login.module.css';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  setWarning,
+  // setWarning,
   setInputUsername,
   setInputPassword,
-  setIsAuthorized,
-  getIsAuthorized,
+  // setIsAuthorized,
+  login,
 } from '../../store/actions/loginPageActions';
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData = useSelector(state => state.loginPage.userData);
+  // const isAuth = useSelector(state => state.loginPage.isAuth);
   const isWarning = useSelector(state => state.loginPage.isWarning);
   const inputPassword = useSelector(state => state.loginPage.inputPassword);
   const inputUsername = useSelector(state => state.loginPage.inputUsername);
 
-  const handlerButton = () => {
-    if (
-      inputUsername === userData.username &&
-      inputPassword === userData.password
-    ) {
-      navigate('/');
-      dispatch(setWarning(false));
-      dispatch(setIsAuthorized(true));
-    } else {
-      dispatch(setInputUsername(''));
-      dispatch(setInputPassword(''));
-      dispatch(setWarning(true));
-    }
+  const handlerLoginButton = () => {
+    dispatch(login(inputUsername, inputPassword));
+    // if (isAuth) {
+    //   navigate('/');
+    //   dispatch(setWarning(false));
+    //   dispatch(setIsAuthorized(true));
+    // } else {
+    //   dispatch(setInputUsername(''));
+    //   dispatch(setInputPassword(''));
+    //   dispatch(setWarning(true));
+    // }
+  };
+
+  const handlerRegistrationButton = () => {
+    navigate('/registration');
   };
 
   const handlerUsernameInputChange = e => {
@@ -42,9 +44,7 @@ const Login = () => {
     dispatch(setInputPassword(e.target.value));
   };
 
-  useEffect(() => {
-    dispatch(getIsAuthorized());
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className={clsx(classes.login, { [classes.warning]: isWarning })}>
@@ -60,7 +60,8 @@ const Login = () => {
         value={inputPassword}
         onChange={e => handlerPasswordInputChange(e)}
       />
-      <button onClick={() => handlerButton()}>Sign in</button>
+      <button onClick={() => handlerLoginButton()}>Sign in</button>
+      <button onClick={() => handlerRegistrationButton()}>Registration</button>
     </div>
   );
 };

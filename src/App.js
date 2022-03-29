@@ -1,20 +1,21 @@
 import './App.css';
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
 import { useNavigate} from "react-router-dom";
-import HomePage from "./components/HomePage/HomePage"
-import Login from "./components/Login/Login"
+import HomePage from "./components/HomePage/HomePage";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 import {Routes, Route} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import {setIsAuthorized} from "./store/actions/loginPageActions"
+import {setIsAuthorized} from "./store/actions/loginPageActions";
 
 const App = () => {
-    const isAuthorized = useSelector(state => state.loginPage.isAuthorized)
+    const isAuth = useSelector(state => state.loginPage.isAuth)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect (() => {
-        isAuthorized ? navigate("/") : navigate("/login")
-    }, [isAuthorized])
+        isAuth ? navigate("/") : navigate("/login")
+    }, [isAuth])
 
     useEffect(() => {
         window.onbeforeunload = function() {
@@ -31,6 +32,7 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
                 <Route path='/login' element={<Login/>}/>
+                <Route path='/registration' element={<SignUp/>}/>
             </Routes>
         </div>
         
