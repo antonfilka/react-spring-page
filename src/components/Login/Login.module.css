@@ -46,3 +46,10 @@
     margin-bottom: 20px;
     font-weight: bold;
 }
+
+
+.validationError {
+    margin-top: 5px;
+    color: rgb(255, 176, 176);
+    font-size: 14px;
+  }
