@@ -6,7 +6,7 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import {Routes, Route} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import {setIsAuthorized} from "./store/actions/loginPageActions";
+import {logout} from "./store/actions/loginPageActions";
 
 const App = () => {
     const isAuth = useSelector(state => state.loginPage.isAuth)
@@ -19,7 +19,7 @@ const App = () => {
 
     useEffect(() => {
         window.onbeforeunload = function() {
-            dispatch(setIsAuthorized(false));
+            dispatch(logout());
         };
     
         return () => {
