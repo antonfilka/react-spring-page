@@ -26,9 +26,9 @@ export const setRegistrationErrors = payload => ({
   payload,
 });
 export const setLoginErrors = payload => ({
-    type: SET_LOGIN_ERRORS,
-    payload,
-  });
+  type: SET_LOGIN_ERRORS,
+  payload,
+});
 
 export const login = (username, password) => {
   return (dispatch, getState) => {
@@ -44,13 +44,13 @@ export const login = (username, password) => {
       })
       .catch(error => {
         const showErrors = {
-            username: '',
-            password: '',
-          };
-          error.response?.data?.message.includes('username')
+          username: '',
+          password: '',
+        };
+        error.response?.data?.message.includes('username')
           ? (showErrors.username = error.response?.data?.message)
           : (showErrors.password = error.response?.data?.message);
-          dispatch(setLoginErrors(showErrors));
+        dispatch(setLoginErrors(showErrors));
       });
   };
 };
@@ -87,7 +87,9 @@ export const registration = data => {
 
 export const logout = () => {
   return (dispatch, getState) => {
-    api.post('/logout').catch(error => console.log(error.response?.data?.message));
+    api
+      .post('/logout')
+      .catch(error => console.log(error.response?.data?.message));
     dispatch(setSearchString(''));
     dispatch(setUser({}));
     dispatch(setIsAuthorized(false));

@@ -38,8 +38,8 @@ export const loginReducer = (state = initialState, action) => {
       return { ...state, registrationErrors: action.payload };
     }
     case SET_LOGIN_ERRORS: {
-        return { ...state, loginErrors: action.payload };
-      }
+      return { ...state, loginErrors: action.payload };
+    }
     default:
       return state;
   }
