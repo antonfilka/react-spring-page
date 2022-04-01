@@ -19,7 +19,7 @@ const Cards = () => {
   );
 
   useEffect(() => {
-    if (isAuth) dispatch(getCards(searchString));
+    if (isAuth) dispatch(getCards());
   }, [searchString, isAuth]);
 
   const cardsBundle = cards.map(item => (

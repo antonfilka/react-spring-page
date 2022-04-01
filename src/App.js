@@ -27,6 +27,8 @@ const App = () => {
         };
     }, []);
     
+
+    // private route
     return (
         <div className="App">
             <Routes>

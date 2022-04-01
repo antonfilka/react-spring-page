@@ -11,9 +11,9 @@ export const setActiveTabId = (payload) => ({type: SET_ACTIVE_TAB_ID, payload});
 export const setCards = (payload) => ({type: SET_CARDS, payload});
 
 
-export const getCards = (searchString) => {
+export const getCards = () => {
     return (dispatch, getState) => {
-        api.get(`/projects/${searchString}`).then(response => {
+        api.get(`/projects/${getState().homePage.searchString}`).then(response => {
             dispatch(setCards(response.data));
             console.log(response.data)
         }).catch(error => {
@@ -21,3 +21,4 @@ export const getCards = (searchString) => {
         })
     }
 }
+ 

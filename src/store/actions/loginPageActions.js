@@ -77,7 +77,7 @@ export const registration = data => {
         error.response?.data?.message.includes('username')
           ? (showErrors.username = error.response?.data?.message)
           : null;
-        error.response?.data?.errors.map(
+        error.response?.data?.errors?.map(
           item => (showErrors[`${item.param}`] = item.msg)
         );
         dispatch(setRegistrationErrors(showErrors));

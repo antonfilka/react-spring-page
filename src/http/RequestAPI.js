@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from '../store/store';
 import { logout } from '../store/actions/loginPageActions';
+import { getCards } from '../store/actions/homePageActions';
 
 export const API_URL = `http://localhost:8000/api`;
 
@@ -28,7 +29,8 @@ api.interceptors.response.use(
         .get(`${API_URL}/refresh`, { withCredentials: true })
         .then(response => {
           localStorage.setItem('token', response.data.accessToken);
-          return api.request(originalRequst);
+          store.dispatch(getCards());
+          // api.request(originalRequst);
         })
         .catch(error => store.dispatch(logout()));
     }
