@@ -87,7 +87,7 @@ export const registration = data => {
 
 export const logout = () => {
   return (dispatch, getState) => {
-    api.post('/logout').catch(error => alert(error.response?.data?.message));
+    api.post('/logout').catch(error => console.log(error.response?.data?.message));
     dispatch(setSearchString(''));
     dispatch(setUser({}));
     dispatch(setIsAuthorized(false));
