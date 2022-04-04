@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../http/RequestAPI';
 
 const SET_OVERLAY_IS_ACTIVE = 'SET_OVERLAY_IS_ACTIVE';
 const SET_SEARCH_STRING = 'SET_SEARCH_STRING';
@@ -16,18 +16,16 @@ export const setSearchString = payload => ({
 export const setActiveTabId = payload => ({ type: SET_ACTIVE_TAB_ID, payload });
 export const setCards = payload => ({ type: SET_CARDS, payload });
 
-export const getCards = string => {
-  return dispatch => {
-    console.log('Req sent get Cards');
-    axios
-      .get(`http://localhost:8000/api/${string}`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
+export const getCards = () => {
+  return (dispatch, getState) => {
+    api
+      .get(`/projects/${getState().homePage.searchString}`)
+      .then(response => {
+        dispatch(setCards(response.data));
+        console.log(response.data);
       })
-      .then(response => dispatch(setCards(response.data.cards)))
-      .catch(error =>
-        console.log('Me error handling: ' + response.data.isAuth)
-      );
+      .catch(error => {
+        console.log(error.response?.data?.message);
+      });
   };
 };

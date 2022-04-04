@@ -5,10 +5,11 @@ import Card from './Card/Card';
 import NoCardsPlug from './NoCardsPlug/NoCardsPlug';
 import SearchBar from './SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchString, getCards } from '../../store/actions/homePageActions';
+import { getCards, setSearchString } from '../../store/actions/homePageActions';
 
 const Cards = () => {
   const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.loginPage.isAuth);
   const cards = useSelector(state => state.homePage.cards);
   const searchString = useSelector(state => state.homePage.searchString);
 
@@ -18,12 +19,12 @@ const Cards = () => {
   );
 
   useEffect(() => {
-    dispatch(getCards(searchString));
-  }, [searchString]);
+if (isAuth) dispatch(getCards());
+  }, [searchString, isAuth]);
 
-  const cardsToShow = cards.map(item => (
+  const cardsBundle = cards.map(item => (
     <Card
-      key={item.id.toString()}
+      key={item.projectId.toString()}
       img={item.img}
       title={item.title}
       text={item.text}
@@ -34,7 +35,7 @@ const Cards = () => {
     <div className={classes.main}>
       <SearchBar handleSearchStringChange={handleSearchStringChange} />
       <div className={classes.cards}>
-        {cards.length < 1 ? <NoCardsPlug /> : cardsToShow}
+{cardsBundle.length < 1 ? <NoCardsPlug /> : cardsBundle}
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
-import axios from 'axios';
+import api from '../../http/RequestAPI';
+import { setSearchString } from './homePageActions';
 
 const SET_INPUT_USERNAME = 'SET_INPUT_USERNAME';
 const SET_INPUT_PASSWORD = 'SET_INPUT_PASSWORD';
-const SET_WARNING = 'SET_WARNING';
 const SET_IS_AUTHORIZED = 'SET_IS_AUTHORIZED';
+const SET_USER = 'SET_USER';
+const SET_REGISTRATION_ERRORS = 'SET_REGISTRATION_ERRORS';
+const SET_LOGIN_ERRORS = 'SET_LOGIN_ERRORS';
 
 export const setInputUsername = payload => ({
   type: SET_INPUT_USERNAME,
@@ -13,74 +16,84 @@ export const setInputPassword = payload => ({
   type: SET_INPUT_PASSWORD,
   payload,
 });
-export const setWarning = payload => ({ type: SET_WARNING, payload });
+
 export const setIsAuthorized = payload => ({
   type: SET_IS_AUTHORIZED,
   payload,
 });
+export const setUser = payload => ({ type: SET_USER, payload });
+export const setRegistrationErrors = payload => ({
+  type: SET_REGISTRATION_ERRORS,
+  payload,
+});
+export const setLoginErrors = payload => ({
+  type: SET_LOGIN_ERRORS,
+  payload,
+});
 
-export const authorize = (username, password) => {
-  return dispatch => {
-    console.log('Req sent signin');
-    axios
-      .post(
-        'http://localhost:8000/api/login',
-        {
-          username: username,
-          password: password,
-        },
-        {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-          },
-        }
-      )
+export const login = (username, password) => {
+  return (dispatch, getState) => {
+    api
+      .post('/login', { username, password })
       .then(response => {
-        if (response.data.isAuth == true) {
-          console.log('login successful');
-          dispatch(setWarning(false));
-          dispatch(setIsAuthorized(true));
-        } else if (response.data.isAuth == false) {
-          console.log('login denyed');
-          dispatch(setInputUsername(''));
-          dispatch(setInputPassword(''));
-          dispatch(setWarning(true));
-        }
+        dispatch(setUser(response.data.user));
+        dispatch(setIsAuthorized(true));
+        dispatch(setInputUsername(''));
+        dispatch(setInputPassword(''));
+        dispatch(setLoginErrors({}));
+        localStorage.setItem('token', response.data.accessToken);
       })
-      .catch(error =>
-        console.log('Me error handling: ' + response.data.isAuth)
-      );
+      .catch(error => {
+        const showErrors = {
+          username: '',
+          password: '',
+        };
+        error.response?.data?.message.includes('username')
+          ? (showErrors.username = error.response?.data?.message)
+          : (showErrors.password = error.response?.data?.message);
+        dispatch(setLoginErrors(showErrors));
+      });
   };
 };
 
-export const getIsAuthorize = (username, password) => {
-  return dispatch => {
-    console.log('Req sent getIsAuthorize');
-    axios
-      .get('http://localhost:8000/api/isAuthorized', {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
+export const registration = data => {
+  return (dispatch, getState) => {
+    api
+      .post('/registration', { ...data })
+      .then(response => {
+        dispatch(setUser(response.data.user));
+        dispatch(setIsAuthorized(true));
+        dispatch(setRegistrationErrors({}));
+        localStorage.setItem('token', response.data.accessToken);
       })
-      .then(response => dispatch(setIsAuthorized(response.data.isAuth)))
-      .catch(error =>
-        console.log('Me error handling: ' + response.data.isAuth)
-      );
+      .catch(error => {
+        const showErrors = {
+          username: '',
+          password: '',
+          confirmPassword: '',
+          firstName: '',
+          lastName: '',
+          age: '',
+        };
+        error.response?.data?.message.includes('username')
+          ? (showErrors.username = error.response?.data?.message)
+          : null;
+        error.response?.data?.errors?.map(
+          item => (showErrors[`${item.param}`] = item.msg)
+        );
+        dispatch(setRegistrationErrors(showErrors));
+      });
   };
 };
 
-export const signOut = (username, password) => {
-  return dispatch => {
-    console.log('Req sent signout');
-    axios
-      .get('http://localhost:8000/api/signout', {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      })
-      .then(response => dispatch(setIsAuthorized(response.data.isAuth)))
-      .catch(error =>
-        console.log('Me error handling: ' + response.data.isAuth)
-      );
+export const logout = () => {
+  return (dispatch, getState) => {
+    api
+      .post('/logout')
+      .catch(error => console.log(error.response?.data?.message));
+    dispatch(setSearchString(''));
+    dispatch(setUser({}));
+    dispatch(setIsAuthorized(false));
+    localStorage.removeItem('token');
   };
 };

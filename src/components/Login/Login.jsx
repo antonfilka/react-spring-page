@@ -1,48 +1,34 @@
-import React from 'react';
-
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
-import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  setInputUsername,
-  setInputPassword,
-  authorize,
-} from '../../store/actions/loginPageActions';
+import { login } from '../../store/actions/loginPageActions';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const showErrors = useSelector(state => state.loginPage.loginErrors);
+  const passRef = useRef();
+  const userRef = useRef();
 
-  const isWarning = useSelector(state => state.loginPage.isWarning);
-  const inputPassword = useSelector(state => state.loginPage.inputPassword);
-  const inputUsername = useSelector(state => state.loginPage.inputUsername);
-
-  const handlerButton = () => {
-    dispatch(authorize(inputUsername, inputPassword));
+  const handlerLoginButton = () => {
+    dispatch(login(userRef.current.value, passRef.current.value));
   };
 
-  const handlerUsernameInputChange = e => {
-    dispatch(setInputUsername(e.target.value));
+  const handlerRegistrationButton = () => {
+    navigate('/registration');
   };
 
-  const handlerPasswordInputChange = e => {
-    dispatch(setInputPassword(e.target.value));
-  };
 
   return (
-    <div className={clsx(classes.login, { [classes.warning]: isWarning })}>
+    <div className={classes.login}>
       <div className={classes.T1}>Authentification</div>
-      <input
-        placeholder="Username"
-        value={inputUsername}
-        onChange={e => handlerUsernameInputChange(e)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={inputPassword}
-        onChange={e => handlerPasswordInputChange(e)}
-      />
-      <button onClick={() => handlerButton()}>Sign in</button>
+      <input placeholder="Username" ref={userRef} />
+      <label className={classes.validationError}>{showErrors.username}</label>
+      <input type="password" placeholder="Password" ref={passRef} />
+      <label className={classes.validationError}>{showErrors.password}</label>
+      <button onClick={() => handlerLoginButton()}>Sign in</button>
+      <button onClick={() => handlerRegistrationButton()}>Registration</button>
     </div>
   );
 };
