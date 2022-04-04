@@ -1,42 +1,38 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(234, 242, 242);
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(234, 242, 242);
+  width: 100%;
 }
 
-
 .cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px 10px 40px 150px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 10px 40px 150px;
 }
 
 .cards img {
-    width: 55px;
+  width: 55px;
 }
 
 @media only screen and (max-width: 1000px) {
-    .cards {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin: 10px 0 40px 0;
-    }
+  .cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0 40px 0;
+  }
 }
 
-
-
 @media only screen and (max-width: 800px) {
-    .cards {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        margin: 10px 0 40px 0;
-    }
-
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 10px 0 40px 0;
+  }
 }

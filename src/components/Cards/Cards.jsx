@@ -19,7 +19,7 @@ const Cards = () => {
   );
 
   useEffect(() => {
-    if (isAuth) dispatch(getCards());
+if (isAuth) dispatch(getCards());
   }, [searchString, isAuth]);
 
   const cardsBundle = cards.map(item => (
@@ -35,7 +35,7 @@ const Cards = () => {
     <div className={classes.main}>
       <SearchBar handleSearchStringChange={handleSearchStringChange} />
       <div className={classes.cards}>
-        {cardsBundle.length < 1 ? <NoCardsPlug /> : cardsBundle}
+{cardsBundle.length < 1 ? <NoCardsPlug /> : cardsBundle}
       </div>
     </div>
   );

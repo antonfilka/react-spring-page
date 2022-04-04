@@ -187,3 +187,4 @@ src/components/SideBar/.DS_Store
 src/components/.DS_Store
 .gitignore
 .DS_Store
+package-lock.json

@@ -16,6 +16,7 @@ export const setInputPassword = payload => ({
   type: SET_INPUT_PASSWORD,
   payload,
 });
+
 export const setIsAuthorized = payload => ({
   type: SET_IS_AUTHORIZED,
   payload,
