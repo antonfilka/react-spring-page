@@ -19,7 +19,6 @@ const Login = () => {
     navigate('/registration');
   };
 
-
   return (
     <div className={classes.login}>
       <div className={classes.T1}>Authentification</div>
